@@ -1,4 +1,4 @@
-package com.yp.netty_demos.io.sockethandlepool;
+package com.yp.java.netty_demo.io.sockethandlepool;
 
 import java.io.IOException;
 import java.net.ServerSocket;

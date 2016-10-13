@@ -1,4 +1,4 @@
-package com.yp.netty_demos.nio;
+package com.yp.java.netty_demo.io.sockethandlepool;
 
 import java.io.BufferedReader;
 import java.io.IOException;
