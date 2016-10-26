@@ -108,6 +108,7 @@ public class GetLatAndLngByBaidu {
 	                while((data= br.readLine())!=null){ 
 	                    dataStr+=data;
 	                } 
+	                System.out.println(dataStr);
 	            } 
 	        } catch (IOException e) { 
 	            e.printStackTrace(); 
@@ -125,7 +126,7 @@ public class GetLatAndLngByBaidu {
 	public static void main(String[] args) throws IOException {
 		GetLatAndLngByBaidu getLatAndLngByBaidu = new GetLatAndLngByBaidu();
 		Object[] o = getLatAndLngByBaidu.getCoordinate("奉贤区");
-		getLatAndLngByBaidu.getAddress("30.915122452605869,121.56064167963345");
+		getLatAndLngByBaidu.getAddress("32.01327292672134000000,120.85691208869823000000");
 		
 	}
 
