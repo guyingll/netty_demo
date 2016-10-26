@@ -1,5 +1,7 @@
-package com.yp.java.netty_demo.netty;
+package com.yp.java.netty_demo.netty.simple;
 
+
+import com.yp.java.netty_demo.netty.overpackage.OverPackageServerHandler;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -19,11 +21,10 @@ public class TimeServer {
 			b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
 				.option(ChannelOption.SO_BACKLOG, 1024)
 				.childHandler(new ChildchannelHandler());
-			
 			ChannelFuture f = b.bind(port).sync();
+			System.out.println("server start");
 			
 			f.channel().closeFuture().sync();
-			
 		}finally{
 			bossGroup.shutdownGracefully();
 			workerGroup.shutdownGracefully();
@@ -33,12 +34,13 @@ public class TimeServer {
 	private class ChildchannelHandler extends ChannelInitializer<SocketChannel>{
 		@Override
 		protected void initChannel(SocketChannel arg0) throws Exception {
-			arg0.pipeline().addLast(new TimeServerHandler());
+//			arg0.pipeline().addLast(new TimeServerHandler());
+		    arg0.pipeline().addLast(new OverPackageServerHandler());
 		}
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		int port = 8080;
+		int port = 8082;
 		if(args!=null && args.length>0){
 			port=Integer.parseInt(args[0]);
 		}

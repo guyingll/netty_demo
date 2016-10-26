@@ -1,4 +1,4 @@
-package com.yp.java.netty_demo.netty;
+package com.yp.java.netty_demo.netty.simple;
 
 import java.util.Date;
 

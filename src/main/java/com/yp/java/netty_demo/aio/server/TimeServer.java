@@ -13,7 +13,7 @@ public class TimeServer {
 				logger.info("use default port : "+port);
 			}
 		}
-		
+		//新建服务
 		AsyncTimeServerHandler timeServer=new AsyncTimeServerHandler(port);
 		new Thread(timeServer,"AIO-Handler-001").start();
 	}
