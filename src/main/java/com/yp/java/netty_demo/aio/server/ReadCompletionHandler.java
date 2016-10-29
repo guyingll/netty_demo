@@ -15,7 +15,7 @@ public class ReadCompletionHandler implements
 	private AsynchronousSocketChannel channel;
 	
 	public ReadCompletionHandler(AsynchronousSocketChannel result){
-		if(result==null)
+		if(channel==null)
 			this.channel=result;
 	}
 
@@ -27,6 +27,7 @@ public class ReadCompletionHandler implements
 	 */
 	public void completed(Integer result, ByteBuffer attachment) {
 		// TODO Auto-generated method stub
+	    //处理业务
 		attachment.flip();
 		byte[] body=new byte[attachment.remaining()];
 		attachment.get(body);
@@ -34,9 +35,11 @@ public class ReadCompletionHandler implements
 			String req=new String(body,"UTF-8");
 			logger.info("The time server receive order : "+req);
 			String currentTime="QUERY TIME ORDER".equalsIgnoreCase(req)?new Date().toString():"BAD ORDER";
+			
+			//异步写入
 			doWrite(currentTime);
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 		
 	}
@@ -52,6 +55,7 @@ public class ReadCompletionHandler implements
 
 				public void completed(Integer result, ByteBuffer buffer) {
 					// TODO Auto-generated method stub
+				    //迭代写入
 					if(buffer.hasRemaining())
 						channel.write(buffer, buffer, this);
 				}

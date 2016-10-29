@@ -23,6 +23,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
 		this.host=host;
 		
 		try {
+		    //产生client
 			client=AsynchronousSocketChannel.open();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -86,6 +87,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
 
 						public void failed(Throwable exc, ByteBuffer attachment) {
 							// TODO Auto-generated method stub
+						    exc.printStackTrace();
 							try {
 								client.close();
 								latch.countDown();
@@ -100,6 +102,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
 			}
 
 			public void failed(Throwable exc, ByteBuffer attachment) {
+			    exc.printStackTrace();
 				// TODO Auto-generated method stub
 				try {
 					client.close();
@@ -117,6 +120,7 @@ public class AsyncTimeClientHandler implements CompletionHandler<Void, AsyncTime
 
 	public void failed(Throwable exc, AsyncTimeClientHandler attachment) {
 		// TODO Auto-generated method stub
+	    exc.printStackTrace();
 		try {
 			client.close();
 			latch.countDown();

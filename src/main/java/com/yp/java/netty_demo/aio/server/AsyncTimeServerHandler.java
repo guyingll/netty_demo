@@ -20,6 +20,7 @@ public class AsyncTimeServerHandler implements Runnable{
 	public AsyncTimeServerHandler(int port) {
 		this.port=port;
 		try{
+		    //启动服务
 			asynchronousServerSocketChannel=AsynchronousServerSocketChannel.open();
 			asynchronousServerSocketChannel.bind(new InetSocketAddress(port));
 			
@@ -34,7 +35,7 @@ public class AsyncTimeServerHandler implements Runnable{
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
-		
+		//当前操作结束前一直阻塞
 		latch=new CountDownLatch(1);
 		doAccept();
 		try {
@@ -46,6 +47,7 @@ public class AsyncTimeServerHandler implements Runnable{
 	}
 
 	private void doAccept() {
+	    //接受请求
 		asynchronousServerSocketChannel.accept(this, new AcceptCompletionHandler());
 	}
 	
