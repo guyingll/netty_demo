@@ -1,12 +1,6 @@
 package com.yp.java.netty_demo;
 
 
-import java.util.Queue;
-import java.util.Set;
-import java.util.concurrent.ConcurrentMap;
-
-import redis.clients.jedis.Jedis;
-
 public class RedisExample {
 
     /**

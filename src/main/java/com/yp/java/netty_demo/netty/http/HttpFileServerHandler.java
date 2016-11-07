@@ -221,7 +221,7 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
     
     private static void sendError(ChannelHandlerContext ctx,HttpResponseStatus status) {
         FullHttpResponse res=new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK,Unpooled.copiedBuffer("Failure: "+status.toString()+"\r\n",CharsetUtil.UTF_8));
-        res.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/html;charset=UTF-8");
+        res.headers().set(HttpHeaderNames.CONTENT_TYPE,"text/plain;charset=UTF-8");
         ctx.writeAndFlush(res).addListener(ChannelFutureListener.CLOSE);
     } 
     
