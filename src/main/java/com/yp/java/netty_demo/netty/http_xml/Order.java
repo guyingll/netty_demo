@@ -1,6 +1,11 @@
 package com.yp.java.netty_demo.netty.http_xml;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+@XStreamAlias("order")
 public class Order {
+    @XStreamAsAttribute
     private long orderNumber;  
     
     private Customer customer;  
@@ -11,6 +16,7 @@ public class Order {
   
     private Address shipTo;  
 
+    @XStreamAsAttribute
     private Float total;
 
     public long getOrderNumber() {
@@ -59,7 +65,12 @@ public class Order {
 
     public void setTotal(Float total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Order [orderNumber=" + orderNumber + ", customer=" + customer + ", billTo=" + billTo + ", shipping="
+                + shipping + ", shipTo=" + shipTo + ", total=" + total + "]";
     }  
-    
     
 }

@@ -15,7 +15,8 @@
     <target name="binggen">
         <echo message="Running BindGen tool" />
         <java classpathref="classpath" fork="true" failonerror="true" classname="org.jibx.binding.BindingGenerator">
-            <arg value="com.yp.java.netty_demo.netty.http_xml.Address" />
+	       <!--  <arg value="${basedir}/src/main/java/com/yp/java/netty_demo/netty/http_xml/xml" /> -->
+            <arg value="com.yp.java.netty_demo.netty.http_xml.Order" />
         </java>
     </target>
     <target name="bind">

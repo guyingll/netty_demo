@@ -1,5 +1,8 @@
 package com.yp.java.netty_demo.netty.http_xml;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("billTo")
 public class Address {
     private String street1;  
     
@@ -61,4 +64,9 @@ public class Address {
         this.country = country;
     }  
     
+    @Override
+    public String toString() {
+        return "Address [street1=" + street1 + ", street2=" + street2 + ", city=" + city + ", state=" + state
+                + ", postCode=" + postCode + ", country=" + country + "]";
+    }
 }

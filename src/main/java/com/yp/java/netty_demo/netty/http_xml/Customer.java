@@ -2,7 +2,11 @@ package com.yp.java.netty_demo.netty.http_xml;
 
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
 public class Customer {
+    
+    @XStreamAsAttribute
     private long customerNumber;  
     
     private String firstName;  
@@ -41,7 +45,12 @@ public class Customer {
 
     public void setMiddleNames(List<String> middleNames) {
         this.middleNames = middleNames;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer [customerNumber=" + customerNumber + ", firstName=" + firstName + ", lastName=" + lastName
+                + ", middleNames=" + middleNames + "]";
     }  
-    
     
 }

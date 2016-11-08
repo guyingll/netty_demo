@@ -8,7 +8,7 @@
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  </properties>  
   <dependencies>
 	<dependency>
 		<groupId>com.alibaba</groupId>
@@ -16,13 +16,28 @@
 		<version>1.2.7</version>
 	</dependency>
 	
+	<!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+	<dependency>
+	    <groupId>com.thoughtworks.xstream</groupId>
+	    <artifactId>xstream</artifactId>
+	    <version>1.4.9</version>
+	</dependency>
+	
+  	<!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+	<dependency>
+	    <groupId>com.google.protobuf</groupId>
+	    <artifactId>protobuf-java</artifactId>
+	    <version>2.6.1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.jibx/jibx-bind -->
+	<dependency>
+	    <groupId>org.jibx</groupId>
+	    <artifactId>jibx-bind</artifactId>
+	    <version>1.2.6</version>
+	</dependency>
+	
   	
-<!-- 	<dependency>
-        <groupId>org.redisson</groupId>
-        <artifactId>redisson</artifactId>
-        <version>2.4.0</version>
-    </dependency> -->
-
     <dependency>
 
      <groupId>org.slf4j</groupId>
@@ -39,18 +54,18 @@
 	    <version>5.0.0.Alpha2</version>
 	</dependency>
 	
-	<dependency>
+<!-- 	<dependency>
 	    <groupId>com.ning</groupId>
 	    <artifactId>async-http-client</artifactId>
 	    <version>1.9.38</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/com.loopj.android/android-async-http -->
+	https://mvnrepository.com/artifact/com.loopj.android/android-async-http
 	<dependency>
 	    <groupId>com.loopj.android</groupId>
 	    <artifactId>android-async-http</artifactId>
 	    <version>1.4.9</version>
-	</dependency>
+	</dependency> -->
 	
 	
 	
@@ -68,10 +83,10 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
+<!--     <dependency>
     	<groupId>redis.clients</groupId>
     	<artifactId>jedis</artifactId>
     	<version>2.9.0</version>
-    </dependency>
+    </dependency> -->
   </dependencies>
 </project>
