@@ -1,14 +1,13 @@
 package com.yp.java.netty_demo.netty.http_xml;
 
-import java.nio.charset.Charset;
-import java.util.List;
-
-import com.thoughtworks.xstream.XStream;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageEncoder;
+
+import java.nio.charset.Charset;
+
+import com.thoughtworks.xstream.XStream;
 
 public abstract class AbstractHttpXmlEncoder <T> extends MessageToMessageEncoder<T> {
     final static String CHARSET_NAME = "UTF-8";  
@@ -25,7 +24,6 @@ public abstract class AbstractHttpXmlEncoder <T> extends MessageToMessageEncoder
         return encodeBuf;  
     }  
   
-    @Skip  
     @Override  
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {  
         System.out.println("fail to encode");  

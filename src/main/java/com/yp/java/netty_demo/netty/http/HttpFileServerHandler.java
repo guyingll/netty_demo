@@ -14,11 +14,11 @@ import io.netty.handler.codec.http.DefaultHttpResponse;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpHeaderNames;
-import io.netty.handler.codec.http.HttpHeaderUtil;
 import io.netty.handler.codec.http.HttpHeaderValues;
 import io.netty.handler.codec.http.HttpMethod;
 import io.netty.handler.codec.http.HttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
+import io.netty.handler.codec.http.HttpUtil;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.LastHttpContent;
 import io.netty.handler.stream.ChunkedFile;
@@ -41,7 +41,7 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
     }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
         if(!request.decoderResult().isSuccess()){
             sendError(ctx,HttpResponseStatus.BAD_REQUEST);
             return;
@@ -93,9 +93,9 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
         
         //注意传输的response类型
         HttpResponse res=new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
-        HttpHeaderUtil.setContentLength(res,length);
+        HttpUtil.setContentLength(res,length);
         setContentTypeHeader(res,f);
-        if(HttpHeaderUtil.isKeepAlive(request)){
+        if(HttpUtil.isKeepAlive(request)){
             res.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
         }
         ctx.write(res);
@@ -126,7 +126,7 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
         
         ChannelFuture lastContentFuture=ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
         
-        if(!HttpHeaderUtil.isKeepAlive(request)){
+        if(!HttpUtil.isKeepAlive(request)){
             lastContentFuture.addListener(ChannelFutureListener.CLOSE);
         }
     }

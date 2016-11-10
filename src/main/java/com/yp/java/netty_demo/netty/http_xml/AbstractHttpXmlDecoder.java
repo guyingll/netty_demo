@@ -1,12 +1,12 @@
 package com.yp.java.netty_demo.netty.http_xml;
 
-import java.nio.charset.Charset;
-
-import com.thoughtworks.xstream.XStream;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
+
+import java.nio.charset.Charset;
+
+import com.thoughtworks.xstream.XStream;
 
 public abstract class AbstractHttpXmlDecoder <T> extends MessageToMessageDecoder<T>{
 
@@ -38,7 +38,6 @@ public abstract class AbstractHttpXmlDecoder <T> extends MessageToMessageDecoder
         return result;  
     }  
   
-    @Skip  
     @Override  
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {  
         cause.printStackTrace();

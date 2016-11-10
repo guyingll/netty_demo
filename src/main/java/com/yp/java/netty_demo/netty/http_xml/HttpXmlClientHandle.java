@@ -6,7 +6,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 public class HttpXmlClientHandle extends SimpleChannelInboundHandler<HttpXmlResponse> {
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, HttpXmlResponse msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, HttpXmlResponse msg) throws Exception {
         System.out.println("The client receive response of http header is : " + msg.getHttpResponse().headers().names());  
         System.out.println("The client receive response of http body is : " + msg.getResult()); 
     }

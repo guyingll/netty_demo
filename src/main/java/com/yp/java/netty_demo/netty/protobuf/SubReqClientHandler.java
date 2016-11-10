@@ -1,11 +1,11 @@
 package com.yp.java.netty_demo.netty.protobuf;
 
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+
 import com.yp.java.netty_demo.netty.protobuf.SubscribeReqProto.SubscribeReq;
 
-import io.netty.channel.ChannelHandlerAdapter;
-import io.netty.channel.ChannelHandlerContext;
-
-public class SubReqClientHandler extends ChannelHandlerAdapter {
+public class SubReqClientHandler extends ChannelInboundHandlerAdapter  {
 
     @Override
     public void channelRead(ChannelHandlerContext paramChannelHandlerContext, Object paramObject) throws Exception {

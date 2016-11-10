@@ -34,7 +34,6 @@ public class HttpXmlClient {
                 }
             });
             ChannelFuture f=b.connect(new InetSocketAddress(port)).sync();
-            
             //等待客戶端链路退出
             f.channel().closeFuture().sync();
         }finally{

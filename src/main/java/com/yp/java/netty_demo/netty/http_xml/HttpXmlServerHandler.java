@@ -22,7 +22,7 @@ import java.util.List;
 public class HttpXmlServerHandler extends SimpleChannelInboundHandler<HttpXmlRequest>{
 
     @Override
-    protected void messageReceived(final ChannelHandlerContext ctx, HttpXmlRequest xmlRequest) throws Exception {
+    protected void channelRead0(final ChannelHandlerContext ctx, HttpXmlRequest xmlRequest) throws Exception {
         HttpRequest request = xmlRequest.getRequest();  
         Order order = (Order) (xmlRequest.getBody());  
         // 输出解码获得的Order对象  
@@ -30,7 +30,7 @@ public class HttpXmlServerHandler extends SimpleChannelInboundHandler<HttpXmlReq
         dobusiness(order);  
         System.out.println(order);  
         ChannelFuture future = ctx.writeAndFlush(new HttpXmlResponse(null, order));  
-        if (request.headers().get(HttpHeaderNames.CONNECTION) != HttpHeaderValues.KEEP_ALIVE) {  
+        if (request.headers().get(HttpHeaderNames.CONNECTION).equalsIgnoreCase(HttpHeaderValues.KEEP_ALIVE.toString())) {  
             future.addListener(new GenericFutureListener<Future<? super Void>>() {  
                 public void operationComplete(Future future) throws Exception {  
                     ctx.close();  
