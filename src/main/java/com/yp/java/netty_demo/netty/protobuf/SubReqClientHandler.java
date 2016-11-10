@@ -1,9 +1,11 @@
-package com.yp.java.netty_demo.netty.java_serializable;
+package com.yp.java.netty_demo.netty.protobuf;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class SubReqClientHandler extends ChannelInboundHandlerAdapter {
+import com.yp.java.netty_demo.netty.protobuf.SubscribeReqProto.SubscribeReq;
+
+public class SubReqClientHandler extends ChannelInboundHandlerAdapter  {
 
     @Override
     public void channelRead(ChannelHandlerContext paramChannelHandlerContext, Object paramObject) throws Exception {
@@ -19,13 +21,12 @@ public class SubReqClientHandler extends ChannelInboundHandlerAdapter {
     }
 
     private SubscribeReq subReq(int i) {
-        SubscribeReq req = new SubscribeReq();
-        req.setAddress("南方公园");
-        req.setPhoneName("13100004444");
-        req.setSubReqId(i);
+        SubscribeReq.Builder req = SubscribeReq.newBuilder();
+        req.addAddress("南方公园");
+        req.setSubReqID(i);
         req.setProductName("权威指南");
         req.setUserName("zhangsan");
-        return req;
+        return req.build();
     }
 
     @Override

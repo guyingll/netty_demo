@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<binding value-style="attribute">
+  <mapping class="com.yp.java.netty_demo.netty.http_xml.Address" name="address">
+    <value style="element" name="street1" field="street1" usage="optional"/>
+    <value style="element" name="street2" field="street2" usage="optional"/>
+    <value style="element" name="city" field="city" usage="optional"/>
+    <value style="element" name="state" field="state" usage="optional"/>
+    <value style="element" name="post-code" field="postCode" usage="optional"/>
+    <value style="element" name="country" field="country" usage="optional"/>
+  </mapping>
+</binding>
