@@ -7,9 +7,10 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 public class FileChannelTest {
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws IOException {
-        RandomAccessFile r=new RandomAccessFile("D:\\workspace1\\netty-demos\\resource\\test.txt", "rw");
-        FileChannel  f=r.getChannel();
+        RandomAccessFile randomAccessFile = new RandomAccessFile("D:\\workspace1\\netty-demos\\resource\\test.txt", "rw");
+        FileChannel  f=randomAccessFile.getChannel();
         testRead(f);
         testWrite(f);
         f.close();
@@ -26,7 +27,7 @@ public class FileChannelTest {
     private static void testRead(FileChannel  f) throws FileNotFoundException, IOException {
         
         ByteBuffer b=ByteBuffer.allocate(64);
-        int i=f.read(b);
+        f.read(b);
         
         b.flip();
         

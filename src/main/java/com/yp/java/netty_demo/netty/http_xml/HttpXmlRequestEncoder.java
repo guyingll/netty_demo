@@ -2,7 +2,6 @@ package com.yp.java.netty_demo.netty.http_xml;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.Headers;
 import io.netty.handler.codec.http.DefaultFullHttpRequest;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpHeaderNames;
@@ -13,8 +12,6 @@ import io.netty.handler.codec.http.HttpVersion;
 
 import java.net.InetAddress;
 import java.util.List;
-
-import org.apache.regexp.RE;
 
 public class HttpXmlRequestEncoder extends AbstractHttpXmlEncoder<HttpXmlRequest> {
 

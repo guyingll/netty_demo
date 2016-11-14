@@ -50,7 +50,7 @@ public class GetLatAndLngByBaidu {
 				insr = new InputStreamReader( httpsConn.getInputStream(), "UTF-8"); 
 				br = new BufferedReader(insr); 
 				String data = null; 
-				int count = 1;
+//				int count = 1;
 				while((data= br.readLine())!=null){ 
 				    System.out.println(data);
 //					if(count==5){
@@ -104,7 +104,7 @@ public class GetLatAndLngByBaidu {
 	                br = new BufferedReader(insr); 
 	                String data = null; 
 	                String dataStr=null;
-	                int count = 1;
+//	                int count = 1;
 	                while((data= br.readLine())!=null){ 
 	                    dataStr+=data;
 	                } 
@@ -125,7 +125,7 @@ public class GetLatAndLngByBaidu {
 
 	public static void main(String[] args) throws IOException {
 		GetLatAndLngByBaidu getLatAndLngByBaidu = new GetLatAndLngByBaidu();
-		Object[] o = getLatAndLngByBaidu.getCoordinate("奉贤区");
+		getLatAndLngByBaidu.getCoordinate("奉贤区");
 		getLatAndLngByBaidu.getAddress("32.01327292672134000000,120.85691208869823000000");
 		
 	}

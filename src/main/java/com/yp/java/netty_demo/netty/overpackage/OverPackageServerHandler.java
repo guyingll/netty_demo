@@ -1,13 +1,13 @@
 package com.yp.java.netty_demo.netty.overpackage;
 
-import java.util.Date;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class OverPackageServerHandler extends ChannelHandlerAdapter {
+import java.util.Date;
+
+public class OverPackageServerHandler extends ChannelInboundHandlerAdapter {
     private int counter;
 	public void channelRead(ChannelHandlerContext ctx,Object msg) throws Exception{
 		ByteBuf buf=(ByteBuf) msg;

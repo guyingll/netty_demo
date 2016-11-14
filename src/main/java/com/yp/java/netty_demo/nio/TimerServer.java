@@ -1,8 +1,5 @@
 package com.yp.java.netty_demo.nio;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 public class TimerServer {
     public static void main(String[] args) {

@@ -30,6 +30,7 @@ public class HttpXmlResponseDecoder extends AbstractHttpXmlDecoder<FullHttpRespo
         out.add(request);  
     }  
   
+    @SuppressWarnings("unused")
     private static void sendError(ChannelHandlerContext ctx, HttpResponseStatus status) {  
         FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, status,  
                 Unpooled.copiedBuffer("Failure: " + status.toString() + "\r\n", CharsetUtil.UTF_8));  

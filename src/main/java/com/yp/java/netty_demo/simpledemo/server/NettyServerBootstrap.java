@@ -65,7 +65,7 @@ public class NettyServerBootstrap {
 public static void main(String[] args) throws InterruptedException {
     
     NettyServerBootstrap server= new NettyServerBootstrap(9999);
-
+    server.bind();
   }
 
 }

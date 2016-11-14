@@ -57,6 +57,7 @@ public final class WebSocketClient {
 
     static final String URL = System.getProperty("url", "ws://127.0.0.1:8080/websocket");
 
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) throws Exception {
         URI uri = new URI(URL);
         String scheme = uri.getScheme() == null? "http" : uri.getScheme();

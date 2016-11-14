@@ -10,6 +10,7 @@ import com.thoughtworks.xstream.XStream;
 
 public abstract class AbstractHttpXmlDecoder <T> extends MessageToMessageDecoder<T>{
 
+    @SuppressWarnings("unused")
     private Class<?> clazz;  
     // 是否输出码流的标志，默认为false  
     private boolean isPrint;  
