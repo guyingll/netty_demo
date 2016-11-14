@@ -18,20 +18,22 @@ public class SubReqServer {
         try {
             ServerBootstrap b=new ServerBootstrap();
             b.group(bossGroup, workerGroup)
-            .channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100)
+            .channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 1024)
             .handler(new LoggingHandler(LogLevel.INFO))
             .childHandler(new ChannelInitializer<SocketChannel>() {
 
                 @Override
                 protected void initChannel(SocketChannel ch) throws Exception {
                     ch.pipeline()
-                    .addLast(MarshallingCodeFactory.buildMarshallingDecoder())
-                    .addLast(MarshallingCodeFactory.buildMarshallingEncoder())
-                    .addLast(new SubReqServerHandler());
+                    
+                    .addLast(MarshallingCodeCFactory.buildMarshallingEncoder())
+                    .addLast(MarshallingCodeCFactory.buildMarshallingDecoder())
+                    .addLast(new ServerChannelHandler());
                 }
                 
             });
             ChannelFuture future = b.bind(port).sync();
+            System.out.println("server open");
             future.channel().closeFuture().sync();
             
         } catch (Exception e) {

@@ -3,7 +3,7 @@ package com.yp.java.netty_demo.netty.marshalling;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class SubReqClientHandler extends ChannelInboundHandlerAdapter {
+public class ClientChannelHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext paramChannelHandlerContext, Object paramObject) throws Exception {

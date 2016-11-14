@@ -29,7 +29,8 @@ public final class NettyMessageEncoder extends MessageToMessageEncoder<NettyMess
 		sendBuf.writeLong(msg.getHeader().getSessionId());
 		sendBuf.writeByte(msg.getHeader().getType());
 		sendBuf.writeByte(msg.getHeader().getPriority());
-
+		sendBuf.writeInt(msg.getHeader().getAttachment().size());
+		
 		String key=null;
 		byte[] keyArray=null;
 		Object value=null;
@@ -48,11 +49,10 @@ public final class NettyMessageEncoder extends MessageToMessageEncoder<NettyMess
 		value=null;
 		if(msg.getBody()!=null){
 			marshallingEncoder.encode(ctx, msg.getBody(),sendBuf);
-		} else {
-			sendBuf.writeInt(0);
-			sendBuf.setInt(4,sendBuf.readableBytes());
-		}
-				
+		} 
+		
+		sendBuf.setInt(4,sendBuf.readableBytes());
+		
 		out.add(sendBuf);
 	}
 

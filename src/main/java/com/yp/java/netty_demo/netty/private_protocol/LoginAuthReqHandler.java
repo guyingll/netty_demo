@@ -1,17 +1,19 @@
 package com.yp.java.netty_demo.netty.private_protocol;
 
 
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class LoginAuthReqHandler extends ChannelHandlerAdapter{
+public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter{
 
+    @Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		NettyMessage nettyMsg = buildLoginReq();
 		System.out.println("client send login auth request to server:"+nettyMsg);
 		ctx.writeAndFlush(buildLoginReq());
 	}
 
+    @Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg)
 			throws Exception {
 		NettyMessage nettyMsg = (NettyMessage)msg;
@@ -32,11 +34,11 @@ public class LoginAuthReqHandler extends ChannelHandlerAdapter{
 		message.setBody("It is request");
 		return message;
 	}
-	
+	@Override
 	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
 		ctx.flush();
 	}
-
+	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 		ctx.close();
 	}

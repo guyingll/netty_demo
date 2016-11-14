@@ -3,15 +3,21 @@ package com.yp.java.netty_demo.netty.marshalling;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class SubReqServerHandler extends ChannelInboundHandlerAdapter {
+public class ServerChannelHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         SubscribeReq req=(SubscribeReq)msg;
+        System.out.println(msg);
         if("zhangsan".equalsIgnoreCase(req.getUserName())){
             System.out.println("request is : "+req.toString());
             ctx.write(resp(req.getSubReqId()));
         }
         ctx.flush();
+    }
+    
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+         System.out.println("test                 111");
     }
     
     private SubscribeResp resp(int subReqId) {
@@ -32,4 +38,5 @@ public class SubReqServerHandler extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         super.exceptionCaught(ctx, cause);
     }
+    
 }

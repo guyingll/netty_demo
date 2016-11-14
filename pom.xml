@@ -86,12 +86,14 @@
       <scope>test</scope>
     </dependency>
     
-      <!-- https://mvnrepository.com/artifact/org.jboss.marshalling/jboss-marshalling -->
+	<!-- https://mvnrepository.com/artifact/org.jboss.marshalling/jboss-marshalling-serial -->
 	<dependency>
 	    <groupId>org.jboss.marshalling</groupId>
-	    <artifactId>jboss-marshalling</artifactId>
+	    <artifactId>jboss-marshalling-serial</artifactId>
 	    <version>1.4.11.Final</version>
 	</dependency>
+
+	
   </dependencies>
   
 
